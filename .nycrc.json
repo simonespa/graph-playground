@@ -1,0 +1,11 @@
+{
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.test.ts"
+  ],
+  "extension": [".ts"],
+  "reporter": ["html", "text"]
+}

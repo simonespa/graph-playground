@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "Graph playground",
   "scripts": {
-    "build": "rimraf ./build && tsc",
     "dev": "tsc --watch",
-    "test:run": "ts-node",
     "test": "mocha -r ts-node/register test/**/*.test.ts",
-    "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test"
+    "test:coverage": "nyc npm run test && open coverage/index.html",
+    "ts-node": "ts-node"
   },
   "repository": {
     "type": "git",
@@ -37,7 +36,6 @@
     "chai": "^4.2.0",
     "mocha": "^8.2.1",
     "nyc": "^15.1.0",
-    "rimraf": "^3.0.2",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
