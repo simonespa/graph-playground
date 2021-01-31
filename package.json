@@ -1,7 +1,7 @@
 {
-  "name": "graph-playground",
+  "name": "data-structures-and-algorithms",
   "version": "1.0.0",
-  "description": "Graph playground",
+  "description": "A collection of data structures and algorithms documentation and a playground to use for your own learning.",
   "scripts": {
     "dev": "tsc --watch",
     "test": "mocha -r ts-node/register test/**/*.test.ts",
@@ -13,10 +13,15 @@
     "url": "git+https://github.com/simonespa/graph-playground.git"
   },
   "keywords": [
+    "algorithms",
+    "data structure",
+    "array",
+    "list",
+    "tree",
     "graph",
     "graph theory",
-    "algorithms",
-    "data structures",
+    "sort",
+    "search",
     "complexity"
   ],
   "author": {
@@ -26,9 +31,9 @@
   },
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/simonespa/graph-playground/issues"
+    "url": "https://github.com/simonespa/data-structures-and-algorithms/issues"
   },
-  "homepage": "https://github.com/simonespa/graph-playground#readme",
+  "homepage": "https://github.com/simonespa/data-structures-and-algorithms#readme",
   "devDependencies": {
     "@types/chai": "^4.2.14",
     "@types/mocha": "^8.2.0",

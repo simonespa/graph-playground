@@ -1,5 +1,5 @@
-# Graph Playground
-This repo contains Graph (and Tree) data structures and related algorithms.
+# Data structures & Algorithms
+This repo is a collection of data structures and algorithms documentation and a playground to use for your own learning.
 ## How to use it
 Install all dependencies
 
