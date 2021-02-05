@@ -1,21 +1,43 @@
-function recursive(rows: number, columns: number): number {
+/**
+ * - Time complexity: O(2^n+m)
+ * - Space complexity: O(n+m)
+ *
+ * where "n" is the number of rows and "m" the number of columns.
+ *
+ * @param rows the number of rows of the grid.
+ * @param columns the number of columns of the grid.
+ */
+function recursiveGridTraveller(rows: number, columns: number): number {
   if (rows === 0 || columns === 0) return 0;
   if (rows === 1 && columns === 1) return 1;
 
-  return recursive(rows - 1, columns) + recursive(rows, columns - 1);
+  return recursiveGridTraveller(rows - 1, columns) + recursiveGridTraveller(rows, columns - 1);
 }
 
-function memoised(rows: number, columns: number, buffer: object = {}): number {
+/**
+ * - Time complexity: O(n+m)
+ * - Space complexity: O(n+m)
+ *
+ * where "n" is the number of rows and "m" the number of columns.
+ *
+ * @param rows the number of rows of the grid.
+ * @param columns the number of columns of the grid.
+ * @param buffer buffer object used for memoisation.
+ */
+function memoisedGridTraveller(rows: number, columns: number, buffer: object = {}): number {
   const key = `${rows}-${columns}`;
   if(key in buffer) return buffer[key];
   if (rows <= 0 || columns <= 0) return 0;
   if (rows === 1 && columns === 1) return 1;
 
-  buffer[key] = memoised(rows - 1, columns, buffer) + memoised(rows, columns - 1, buffer);
+  buffer[key] = memoisedGridTraveller(rows - 1, columns, buffer) + memoisedGridTraveller(rows, columns - 1, buffer);
   return buffer[key];
 }
 
-function memoisedWithoutDuplicates(rows: number, columns: number, buffer: object = {}): number {
+/**
+ *
+ */
+function dedupedGridTraveller(rows: number, columns: number, buffer: object = {}): number {
   let key = `${rows}-${columns}`;
   if (columns < rows) {
     key = `${columns}-${rows}`;
@@ -24,31 +46,36 @@ function memoisedWithoutDuplicates(rows: number, columns: number, buffer: object
   if (rows <= 0 || columns <= 0) return 0;
   if (rows === 1 && columns === 1) return 1;
 
-  buffer[key] = memoisedWithoutDuplicates(rows - 1, columns, buffer) + memoisedWithoutDuplicates(rows, columns - 1, buffer);
+  buffer[key] = dedupedGridTraveller(rows - 1, columns, buffer) + dedupedGridTraveller(rows, columns - 1, buffer);
   return buffer[key];
 }
 
 /**
- * @param n the nth element of the Fibonacci sequence.
- * @param memoisation an option to enable the memoisation optimisation.
+ * @param rows the number of rows of the grid.
+ * @param columns the number of columns of the grid.
+ * @param memoised true to optimise the recursive function by caching the intermediate responses.
+ * @param deduped true to optimise the recursive function by removing duplicate branch in the tree.
  */
 export interface GridTravellerParameters {
   rows: number;
   columns: number;
-  memoisation?: boolean;
-  dedupe?: boolean;
+  memoised?: boolean;
+  deduped?: boolean;
 }
 
+/**
+ * Returns the number of path reachable from the top left corner to the bottom right one in a N x M grid.
+ */
 export default function gridTraveller(parameters: GridTravellerParameters): number {
-  const { rows, columns, memoisation, dedupe } = parameters;
-  if (memoisation) {
-    if (dedupe) {
-      return memoisedWithoutDuplicates(rows, columns);
-    }
-    return memoised(rows, columns);
+  const { rows, columns, memoised, deduped } = parameters;
+
+  if (deduped) {
+    return dedupedGridTraveller(rows, columns);
   }
 
-  return recursive(rows, columns);
-}
+  if (memoised) {
+    return memoisedGridTraveller(rows, columns);
+  }
 
-console.log(gridTraveller({ rows: 30, columns: 10, memoisation: true, dedupe: true  }));
+  return recursiveGridTraveller(rows, columns);
+}

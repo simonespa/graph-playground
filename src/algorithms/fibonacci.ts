@@ -1,44 +1,47 @@
 /**
- * Return the nth element of the Fibonacci sequence.
- *
  * - Time complexity: O(2^n)
  * - Space complexity: O(n)
  *
- * @param n the nth fibonacci elementh in the sequence
+ * @param n the nth element in the Fibonacci sequence.
  */
 function recursiveFibonacci(n: number): number {
   if (n <= 2) return 1;
+
   return recursiveFibonacci(n - 1) + recursiveFibonacci(n - 2);
 }
 
 /**
- * Return the nth element of the Fibonacci sequence.
- *
  * - Time complexity: O(n)
  * - Space complexity: O(n)
  *
- * @param n the nth fibonacci elementh in the sequence
+ * @param n the nth element in the Fibonacci sequence.
+ * @param buffer buffer object used for memoisation.
  */
-function recursiveMemoisedFibonacci(n: number, buffer: object = {}): number {
+function memoisedFibonacci(n: number, buffer: object = {}): number {
   if (n in buffer) return buffer[n];
   if (n <= 2) return 1;
-  buffer[n] = recursiveMemoisedFibonacci(n - 1, buffer) + recursiveMemoisedFibonacci(n - 2, buffer);
+
+  buffer[n] = memoisedFibonacci(n - 1, buffer) + memoisedFibonacci(n - 2, buffer);
   return buffer[n];
 }
 
 /**
- * @param n the nth element of the Fibonacci sequence.
- * @param memoisation an option to enable the memoisation optimisation.
+ * @param n the nth element in the Fibonacci sequence.
+ * @param memoised true to optimise the recursive function by caching the intermediate responses.
  */
 export interface FibonacciParameters {
   n: number;
-  memoisation?: boolean;
+  memoised?: boolean;
 }
 
+/**
+ * Return the nth element of the Fibonacci sequence.
+ */
 export default function fibonacci(parameters: FibonacciParameters): number {
-  const { n, memoisation } = parameters;
-  if (memoisation) {
-    return recursiveMemoisedFibonacci(n);
+  const { n, memoised } = parameters;
+
+  if (memoised) {
+    return memoisedFibonacci(n);
   }
 
   return recursiveFibonacci(n);
