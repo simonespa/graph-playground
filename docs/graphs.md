@@ -35,4 +35,4 @@ When the set of vertices can be split in two independent sets such that every ed
 ### Complete Graphs
 In a complete graphs, each node is connected with every one.
 
-A complete graph with N nodes is denoted Kn and the number of edges is equal to <img src="https://render.githubusercontent.com/render/math?math=\frac{n (n − 1)}{2}"> edges.
+A complete graph with N nodes is denoted Kn and the number of edges is equal to <img src="https://render.githubusercontent.com/render/math?math=\frac{N * (N − 1)}{2}"> edges.
