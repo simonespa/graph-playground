@@ -19,7 +19,7 @@ function recursiveCanSum(targetSum: number, numbers: Array<number>): boolean {
 }
 
 /**
- * - Time complexity: O()
+ * - Time complexity: O(n * m)
  * - Space complexity: O(m)
  *
  * where "m" is the target sum and "n" the size of the array of numbers.
