@@ -4,10 +4,10 @@
  *
  * @param n the nth element in the Fibonacci sequence.
  */
-function recursiveFibonacci(n: number): number {
+function bruteForceFibonacci(n: number): number {
   if (n <= 2) return 1;
 
-  return recursiveFibonacci(n - 1) + recursiveFibonacci(n - 2);
+  return bruteForceFibonacci(n - 1) + bruteForceFibonacci(n - 2);
 }
 
 /**
@@ -44,5 +44,5 @@ export default function fibonacci(parameters: FibonacciParameters): number {
     return memoisedFibonacci(n);
   }
 
-  return recursiveFibonacci(n);
+  return bruteForceFibonacci(n);
 }

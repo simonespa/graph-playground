@@ -16,6 +16,7 @@
   * Heap
 
 ## Algorithms
+* [Dynamic programming](./dynamic-programming.md)
 
 ### Sorting
 * Bubble sort

@@ -7,11 +7,11 @@
  * @param rows the number of rows of the grid.
  * @param columns the number of columns of the grid.
  */
-function recursiveGridTraveller(rows: number, columns: number): number {
+function bruteForceGridTraveller(rows: number, columns: number): number {
   if (rows === 0 || columns === 0) return 0;
   if (rows === 1 && columns === 1) return 1;
 
-  return recursiveGridTraveller(rows - 1, columns) + recursiveGridTraveller(rows, columns - 1);
+  return bruteForceGridTraveller(rows - 1, columns) + bruteForceGridTraveller(rows, columns - 1);
 }
 
 /**
@@ -77,5 +77,5 @@ export default function gridTraveller(parameters: GridTravellerParameters): numb
     return memoisedGridTraveller(rows, columns);
   }
 
-  return recursiveGridTraveller(rows, columns);
+  return bruteForceGridTraveller(rows, columns);
 }

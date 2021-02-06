@@ -7,13 +7,13 @@
  * @param targetSum the target sum to match.
  * @param numbers the array of numbers to combine.
  */
-function recursiveHowSum(targetSum: number, numbers: Array<number>): Array<number> | null {
+function bruteForceHowSum(targetSum: number, numbers: Array<number>): Array<number> | null {
   if (targetSum === 0) return [];
   if (targetSum < 0) return null;
 
   for (let number of numbers) {
     const remainder = targetSum - number;
-    const result = recursiveHowSum(remainder, numbers);
+    const result = bruteForceHowSum(remainder, numbers);
     if (result != null) {
       return [...result, number];
     }
@@ -74,5 +74,5 @@ export default function howSum(parameters: HowSumParameters): Array<number> | nu
     return memoisedHowSum(targetSum, numbers);
   }
 
-  return recursiveHowSum(targetSum, numbers);
+  return bruteForceHowSum(targetSum, numbers);
 }

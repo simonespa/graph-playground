@@ -7,12 +7,12 @@
  * @param targetSum the target sum to match.
  * @param numbers the array of numbers to combine.
  */
-function recursiveCanSum(targetSum: number, numbers: Array<number>): boolean {
+function bruteForceCanSum(targetSum: number, numbers: Array<number>): boolean {
   if (targetSum === 0) return true;
   if (targetSum < 0) return false;
 
   for (let number of numbers) {
-    if (recursiveCanSum(targetSum - number, numbers)) return true;
+    if (bruteForceCanSum(targetSum - number, numbers)) return true;
   }
 
   return false;
@@ -68,5 +68,5 @@ export default function canSum(parameters: CanSumParameters): boolean {
     return memoisedCanSum(targetSum, numbers);
   }
 
-  return recursiveCanSum(targetSum, numbers);
+  return bruteForceCanSum(targetSum, numbers);
 }
