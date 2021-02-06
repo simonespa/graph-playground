@@ -37,7 +37,7 @@ function bruteForceBestSum(targetSum: number, numbers: Array<number>): Array<num
  * @param numbers the array of numbers to combine.
  * @param buffer the buffer used for memoisation.
  */
-function memoisedBestSum(targetSum: number, numbers: Array<number>, buffer: Object = {}): Array<number> | null {
+function memoisedBestSum(targetSum: number, numbers: Array<number>, buffer: object = {}): Array<number> | null {
   if (targetSum in buffer) return buffer[targetSum];
   if (targetSum === 0) return [];
   if (targetSum < 0) return null;
