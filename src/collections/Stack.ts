@@ -1,3 +1,7 @@
+/**
+ * Stack is a linear data structure which follows
+ * the LIFO (Last In First Out) approach.
+ */
 export default interface Stack<T> {
 
   /**
@@ -18,27 +22,4 @@ export default interface Stack<T> {
    * @returns {T | undefined} the item or undefined.
    */
   peek(): T | undefined;
-
-  /**
-   * Tests if this stack is empty.
-   * @returns {boolean} true if and only if this stack contains no items; false otherwise.
-   */
-  isEmpty(): boolean;
-
-  /**
-   * Returns the number of items stored in the stack.
-   * @returns {number} the number of items.
-   */
-  size(): number;
-
-  /**
-   * Removes all of the items from the stack, setting the size to zero. The Stack will be empty after this call returns.
-   */
-  clear(): void;
-
-  /**
-   * Returns a string representation of the stack.
-   * @returns {string} the string representation.
-   */
-  toString(): string;
 }
