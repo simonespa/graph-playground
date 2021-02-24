@@ -61,7 +61,10 @@ function merge(left: Array<number>, right: Array<number>, order: SortingOrder): 
 /**
  * Sort the array of numbers in either ascending or descending order, applying the merge sort algorithm.
  *
- * - Time complexity: O(N log(N)) where N is the size of the array.
+ * - Time complexity: O(N log(N))
+ * - Space complexity: O(N)
+ *
+ * where N is the size of the array.
  *
  * @param input the array of numbers to sort.
  * @param order specify the order of sorting: ascending or descending.

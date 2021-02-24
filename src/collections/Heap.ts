@@ -1,5 +1,5 @@
 import Collection from './Collection';
-import Comparable, { Comparison } from './Comparable';
+import Comparable from '../util/Comparable';
 
 /**
  * A heap is a binary tree that satisfies two properties:
@@ -11,7 +11,7 @@ import Comparable, { Comparison } from './Comparable';
  * The items stored in this data structure must be comparable. For this reason,
  * it only accepts types that extends the "Comparable" interface.
  */
-export interface Heap<T extends Comparable<T>> extends Collection<T> {
+export default interface Heap<T extends Comparable<T>> extends Collection<T> {
   /**
    * Adds a new element to the heap.
    *
@@ -45,7 +45,6 @@ export interface Heap<T extends Comparable<T>> extends Collection<T> {
    */
   toArray(): Array<T>;
 }
-
 
 // class Person implements Comparable<Person>{
 //   private name;
