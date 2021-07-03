@@ -1,5 +1,5 @@
 import BinaryNode from '../src/BinaryNode';
-import { preOrder, inOrder, postOrder } from '../src//dfs';
+import { preOrder, inOrder, postOrder } from './algorithms/dfs';
 import { expect } from 'chai';
 
 const nodes = new Array<BinaryNode<number>>(11);
