@@ -14,20 +14,18 @@ class Heap {
     }
   }
 
-
-  
-
   private bubbleDown(current: number): void {
-    // if it is a leaf, exit
+    // If the current node is a leaf, exit
     if (this.isLeaf(current)) return;
-    // if it is greater than or equal to the greatest of its children, exit
-    const leftChild = this.getLeftChild(current);
-    const rightChild = this.getRightChild(current);
-    const maxChild = this.getMax(leftChild, rightChild);
-    if (this.heap[current] >= this.heap[maxChild]) return;
-
-    this.swap(current, maxChild);
-    this.bubbleDown(maxChild);
+    // Get the max child
+    const maxChild = this.getMax(this.getLeftChild(current), this.getRightChild(current));
+    // If the current node is smaller than the max child
+    if (this.heap[current] < this.heap[maxChild]) {
+      // swap positio between the current node and its child
+      this.swap(current, maxChild);
+      // recursively call this function
+      this.bubbleDown(maxChild);
+    }
   }
 
   private bubbleUp(current: number): void {
@@ -67,9 +65,12 @@ class Heap {
   private getMax(indexOne: number, indexTwo: number): number {
     let one = this.heap[indexOne];
     let two = this.heap[indexTwo];
+
     if (one === undefined) return indexTwo;
     if (two === undefined) return indexOne;
+
     if (two > one) return indexTwo;
+
     return indexOne;
   }
 
