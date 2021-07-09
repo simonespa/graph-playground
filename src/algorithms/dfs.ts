@@ -1,4 +1,4 @@
-import BinaryNode from '../BinaryNode';
+import BinaryNode from 'src/BinaryNode';
 
 export function preOrder<T>(node: BinaryNode<T> | null, result: Array<T>): void {
   if (node === null || node === undefined) return;
