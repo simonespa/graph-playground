@@ -1,6 +1,10 @@
+import Collection from './Collection';
 import Stack from './Stack';
 
-export default class StackArray<T> implements Stack<T> {
+/**
+ * This class implements the Stack interface using the JavaScript dynamic array.
+ */
+export default class StackArray<T> implements Stack<T>, Collection<T> {
 
   private array: Array<T>;
 
@@ -30,9 +34,5 @@ export default class StackArray<T> implements Stack<T> {
 
   clear(): void {
     this.array.splice(0);
-  }
-
-  toString(): string {
-    return `[ ${this.array.join(' | ')} ]`;
   }
 }
